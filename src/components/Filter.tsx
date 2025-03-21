@@ -14,38 +14,19 @@ export const Filter: React.FC<Props> = ({ selected, onSelect }) => {
 
   return (
     <nav className="filter" data-cy="Filter">
-      <a
-        href="#/"
-        className={classNames('filter__link', {
-          selected: selected === FilterType.all,
-        })}
-        data-cy="FilterLinkAll"
-        onClick={handleSelect(FilterType.all)}
-      >
-        {FilterType.all}
-      </a>
-
-      <a
-        href="#/active"
-        className={classNames('filter__link', {
-          selected: selected === FilterType.active,
-        })}
-        data-cy="FilterLinkActive"
-        onClick={handleSelect(FilterType.active)}
-      >
-        {FilterType.active}
-      </a>
-
-      <a
-        href="#/completed"
-        className={classNames('filter__link', {
-          selected: selected === FilterType.completed,
-        })}
-        data-cy="FilterLinkCompleted"
-        onClick={handleSelect(FilterType.completed)}
-      >
-        {FilterType.completed}
-      </a>
+      {Object.values(FilterType).map(filter => (
+        <a
+          key={filter}
+          href="#/"
+          className={classNames('filter__link', {
+            selected: selected === filter,
+          })}
+          data-cy="FilterLinkAll"
+          onClick={handleSelect(filter)}
+        >
+          {filter}
+        </a>
+      ))}
     </nav>
   );
 };

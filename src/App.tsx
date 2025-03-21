@@ -10,12 +10,10 @@ import { Header } from './components/Header';
 import { ErrorInfo } from './components/ErrorInfo';
 import { Footer } from './components/Footer';
 
-function getFilteredTodos(todos: Todo[], filter: FilterType) {
+const getFilteredTodos = (todos: Todo[], filter: FilterType): Todo[] => {
   const filteredTodos = [...todos];
 
   switch (filter) {
-    case FilterType.all:
-      return filteredTodos;
     case FilterType.active:
       return filteredTodos.filter(todo => !todo.completed);
     case FilterType.completed:
@@ -23,7 +21,7 @@ function getFilteredTodos(todos: Todo[], filter: FilterType) {
     default:
       return filteredTodos;
   }
-}
+};
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -36,9 +34,9 @@ export const App: React.FC = () => {
 
   const filteredTodos = getFilteredTodos(todos, filter);
 
-  function getCountActive(): number {
+  const getCountActive = (): number => {
     return todos.filter(todo => !todo.completed).length;
-  }
+  };
 
   useEffect(() => {
     getTodos()
@@ -98,7 +96,6 @@ export const App: React.FC = () => {
 
   return (
     <div className="todoapp">
-      {/* <Loader /> */}
       <h1 className="todoapp__title">todos</h1>
 
       <div className="todoapp__content">
