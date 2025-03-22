@@ -21,7 +21,7 @@ export const Filter: React.FC<Props> = ({ selected, onSelect }) => {
           className={classNames('filter__link', {
             selected: selected === filter,
           })}
-          data-cy="FilterLinkAll"
+          data-cy={`FilterLink${filter}`}
           onClick={handleSelect(filter)}
         >
           {filter}
