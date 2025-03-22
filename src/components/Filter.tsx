@@ -17,7 +17,7 @@ export const Filter: React.FC<Props> = ({ selected, onSelect }) => {
       {Object.values(FilterType).map(filter => (
         <a
           key={filter}
-          href="#/"
+          href={`#/${filter}`}
           className={classNames('filter__link', {
             selected: selected === filter,
           })}
